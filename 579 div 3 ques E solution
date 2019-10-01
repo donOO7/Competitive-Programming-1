@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll                        long long
+#define vi                        vector<ll int>
+#define pb                        emplace_back
+#define rep(i,a,b)                for(int i = a; i<b; ++i)
+#define rrep(i,a,b)               for(int i = a; i>=b; --i)
+#define p(a)                      cout << a << "\n";
+#define p2(a,b)                   cout << a << " " << b << "\n";
+#define fast_io                   ios_base::sync_with_stdio(false);cin.tie(NULL);
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://
+ 
+int32_t main() {
+	fast_io;
+    ll int tt = 1;
+    // cin >> tt;
+    while(tt--) {
+        vi mp(150004,0);
+        ll n;     cin >> n;
+        rep(i,0,n) {
+            ll k;   cin >> k;
+            mp[k]++;
+        }
+        ll ans = 0;
+        rep(i,1,150004) {
+            if(mp[i]>1){
+                mp[i+1]++;
+                mp[i]--;
+            }
+            else if(mp[i]==0){
+                if(mp[i+1]){
+                    mp[i+1]--;
+                    mp[i]++;
+                }
+            }
+            if(mp[i])    ans++;
+        }
+        cout << ans;
+    }
+    return 0;
+}
